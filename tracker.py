@@ -20,7 +20,6 @@ current_portfolio = {'Ford': 'F',
                      'TherapeuticsMD': 'TXMD'}
 
 st.sidebar.header("User Input Options")
-
 selection = st.sidebar.selectbox("Which stock would you like to track?", ('Ford',
                                                                           'Cleveland-Cliffs',
                                                                           'Catalyst Pharmaceuticals',
@@ -28,10 +27,8 @@ selection = st.sidebar.selectbox("Which stock would you like to track?", ('Ford'
                                                                           'TherapeuticsMD'))
 
 
-# Get current date
-today = date.today()
-
 # Allow users to define start and end dates
+today = date.today()
 start_date = st.sidebar.date_input(
     "Please select a start date: ", date(2010, 1, 1))
 end_date = st.sidebar.date_input(
@@ -43,7 +40,6 @@ ticker_data = yf.Ticker(current_portfolio[selection])
 
 
 # Get the historical prices for this ticker.
-
 ticker_dataframe = ticker_data.history(
     period='1d', start=start_date, end=end_date)
 
